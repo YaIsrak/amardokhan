@@ -50,7 +50,7 @@ export default async function Header() {
         </div>
       </div>
       {/* Heading 2 */}
-      <div className="col-span-4 overflow-hidden rounded-2xl">
+      <div className="col-span-6 overflow-hidden rounded-2xl md:col-span-4">
         <Carousel className="h-full">
           <CarouselContent className="">
             {sliderItems.map((item) => (

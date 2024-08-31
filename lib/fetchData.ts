@@ -11,3 +11,17 @@ export const getCategories = async () => {
 
   return data;
 };
+
+export const getFeaturedProducts = async () => {
+  const data = await client.fetch(
+    `
+    *[_type == "product" && featured == true][0..5]{
+        ...,
+        "images": image[].asset->url
+    }
+    `,
+    { cache: "no-store" },
+  );
+
+  return data;
+};
