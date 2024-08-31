@@ -1,14 +1,16 @@
-import Navbar from '@/components/layout/navbar';
+import Footer from "@/components/layout/Footer";
+import Navbar from "@/components/layout/navbar";
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return (
-		<main className='min-h-screen w-full'>
-			<Navbar />
-			{children}
-		</main>
-	);
+  return (
+    <main className="min-h-screen w-full">
+      <Navbar />
+      {children}
+      <Footer />
+    </main>
+  );
 }

@@ -25,3 +25,17 @@ export const getFeaturedProducts = async () => {
 
   return data;
 };
+
+export const getNewArrivalProducts = async () => {
+  const data = await client.fetch(
+    `
+    *[_type == "product"][0..5]{
+        ...,
+        "images": image[].asset->url
+    }
+    `,
+    { cache: "no-store" },
+  );
+
+  return data;
+};

@@ -14,7 +14,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Link
       href={`/shop/${product._id}`}
-      className="relative overflow-hidden rounded-md border border-muted px-4 pb-4 transition-all hover:border-muted-foreground hover:shadow-md md:pb-6"
+      className="relative overflow-hidden rounded-md border border-muted px-4 py-6 transition-all hover:border-muted-foreground hover:shadow-md"
     >
       {/* discount */}
       {product.discount !== 0 && (
@@ -24,13 +24,14 @@ export default function ProductCard({ product }: ProductCardProps) {
       )}
 
       {/* image */}
-      <Image
-        src={product.images[0]}
-        alt={product.name}
-        width={500}
-        height={500}
-        className="bg-gray-400"
-      />
+      <div className="relative aspect-square w-full">
+        <Image
+          src={product.images[0]}
+          alt={product.name}
+          width={500}
+          height={500}
+        />
+      </div>
 
       {/* name */}
       <h3 className="text-nowrap text-base font-semibold md:text-lg">
