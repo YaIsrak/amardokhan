@@ -5,18 +5,18 @@ import { Separator } from "../ui/separator";
 export default function Footer() {
   const linkList = [
     "Sell on AmaderDhokan",
-    "Sell Your service on AmaderDhokan",
-    "Sell on AmaderDhokan Business",
-    "Sell your apps on AmaderDhokan",
-    "Become a vendor on AmaderDhokan",
-    "Advertise on AmaderDhokan",
+    "Sell Your service ",
+    "Sell on Business",
+    "Sell your apps",
+    "Become a vendor",
+    "Advertise",
     "Self-Publish with Us",
-    "Host an AmaderDhokan Experience",
+    "Host an Experience",
     "Help",
   ];
   return (
     <footer className="container mx-auto border-t bg-muted px-4 py-12">
-      <div className="flex gap-4">
+      <div className="flex flex-col gap-4 md:flex-row">
         {/* contact */}
         <div>
           <p className="text-sm font-semibold">Do You Need Help ?</p>
@@ -55,7 +55,7 @@ export default function Footer() {
               <Link
                 href={"/"}
                 key={link}
-                className="text-nowrap text-sm font-light text-muted-foreground hover:underline"
+                className="text-nowrap text-xs font-light text-muted-foreground hover:underline"
               >
                 {link}
               </Link>
@@ -71,7 +71,7 @@ export default function Footer() {
               <Link
                 href={"/"}
                 key={link}
-                className="text-nowrap text-sm font-light text-muted-foreground hover:underline"
+                className="text-nowrap text-xs font-light text-muted-foreground hover:underline"
               >
                 {link}
               </Link>
@@ -87,7 +87,7 @@ export default function Footer() {
               <Link
                 href={"/"}
                 key={link}
-                className="text-nowrap text-sm font-light text-muted-foreground hover:underline"
+                className="text-nowrap text-xs font-light text-muted-foreground hover:underline"
               >
                 {link}
               </Link>

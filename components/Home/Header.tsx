@@ -62,16 +62,20 @@ export default async function Header() {
                   height={1080}
                 />
                 <div className="absolute inset-0 flex items-center px-20">
-                  <div className="space-y-4">
-                    <h1 className="text-5xl font-bold">{item.title}</h1>
-                    <p>Only this week, dont&apos; miss</p>
+                  <div className="space-y-2 md:space-y-4">
+                    <h1 className="text-3xl font-bold md:text-5xl">
+                      {item.title}
+                    </h1>
+                    <p className="text-sm md:text-base">
+                      Only this week, dont&apos; miss
+                    </p>
                     <p>
                       from{" "}
-                      <span className="text-5xl font-bold text-rose-500">
+                      <span className="text-4xl font-bold text-rose-500 md:text-5xl">
                         ৳ 800
                       </span>
                     </p>
-                    <Button className="bg-indigo-500" asChild>
+                    <Button className="bg-indigo-500" asChild size={"sm"}>
                       <Link href="/shop">
                         Shop Now
                         <ArrowRight className="ml-2 h-4 w-4" />

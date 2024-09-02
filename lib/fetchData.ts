@@ -14,12 +14,10 @@ export const getCategories = async () => {
 
 export const getFeaturedProducts = async () => {
   const data = await client.fetch(
-    `
-    *[_type == "product" && featured == true][0..5]{
+    `*[_type == "product" && featured == true][0..5]{
         ...,
         "images": image[].asset->url
-    }
-    `,
+    }`,
     { cache: "no-store" },
   );
 
@@ -28,12 +26,23 @@ export const getFeaturedProducts = async () => {
 
 export const getNewArrivalProducts = async () => {
   const data = await client.fetch(
-    `
-    *[_type == "product"][0..5]{
+    `*[_type == "product"][0..5]{
         ...,
         "images": image[].asset->url
-    }
-    `,
+      }`,
+    { cache: "no-store" },
+  );
+
+  return data;
+};
+
+export const getProductById = async (id: string) => {
+  const data = await client.fetch(
+    `*[ _id == "${id}"][0]{
+          ...,
+          category[]->,
+          "images": image[].asset->url
+      }`,
     { cache: "no-store" },
   );
 
