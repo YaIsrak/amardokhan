@@ -1,5 +1,6 @@
 "use client";
 
+import ProductCard from "@/components/Card/ProductCard";
 import ProductsSideBar from "@/components/ProductsSideBar";
 import {
   Select,
@@ -9,13 +10,34 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useAllProducts } from "@/lib/useFetch";
 import { Filter, X } from "lucide-react";
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 
 export default function ShopPage() {
   const searchParams = useSearchParams();
   const hasQueryParams = searchParams.toString().length > 0;
+
+  const [minPrice, setMinPrice] = useState(searchParams.get("minPrice") || "0");
+  const [maxPrice, setMaxPrice] = useState(
+    searchParams.get("maxPrice") || "500",
+  );
+  const [selectedCategory, setSelectedCategory] = useState(
+    searchParams.get("filterCat") || "",
+  );
+  const [inStock, setInStock] = useState(
+    searchParams.get("stockStatus") === "inStock",
+  );
+
+  // info: Fetch all products
+  const { products, loading, error } = useAllProducts({
+    categoryID: selectedCategory,
+    minPrice: parseInt(minPrice),
+    maxPrice: parseInt(maxPrice),
+    inStock,
+    searchParams,
+  });
 
   return (
     <main className="container mx-auto px-4 py-12">
@@ -28,12 +50,12 @@ export default function ShopPage() {
         <h2 className="col-span-6 lg:col-span-5">
           {/* Clear filter */}
           {hasQueryParams && (
-            <Link href="/shop">
+            <a href="/shop">
               <p className="my-2 flex items-center gap-1 text-sm">
                 <X className="size-4" />
                 Clear filter
               </p>
-            </Link>
+            </a>
           )}
 
           {/* Mobile Filter Topbar */}
@@ -74,6 +96,13 @@ export default function ShopPage() {
                 </SelectContent>
               </Select>
             </div>
+          </div>
+
+          {/* Products */}
+          <div className="grid grid-cols-2 py-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6">
+            {products?.map((product) => (
+              <ProductCard key={product._id} product={product} />
+            ))}
           </div>
         </h2>
       </div>

@@ -37,7 +37,7 @@ export default function ProductsSideBar() {
     if (selectedCategory) query.set("filterCat", selectedCategory);
     if (inStock) query.set("stockStatus", "inStock");
 
-    router.push(`/shop?${query.toString()}`);
+    router.replace(`/shop?${query.toString()}`);
   };
 
   return (
@@ -74,7 +74,13 @@ export default function ProductsSideBar() {
           <p className="text-sm">
             Price {minPrice}-{maxPrice} BTD
           </p>
-          <Button size="sm" variant={"secondary"} onClick={applyFilter}>
+          <Button
+            size="sm"
+            variant={"secondary"}
+            onClick={() => {
+              applyFilter();
+            }}
+          >
             Filter
           </Button>
         </div>
@@ -87,13 +93,13 @@ export default function ProductsSideBar() {
         <h4 className="text-sm font-semibold">Widget price Filter</h4>
 
         <RadioGroup
-          defaultValue="all"
+          defaultValue=""
           className="my-4"
-          value={selectedCategory || "all"}
+          value={selectedCategory || ""}
           onValueChange={(e) => setSelectedCategory(e)}
         >
           <div className="flex items-center space-x-2">
-            <RadioGroupItem value="all" id="r1" />
+            <RadioGroupItem value="" id="r1" />
             <Label htmlFor="r1" className="text-xs">
               All
             </Label>
