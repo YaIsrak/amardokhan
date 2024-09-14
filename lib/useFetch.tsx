@@ -21,7 +21,7 @@ export function useCategories() {
           setLoading(false);
           setError(false);
         })
-        .catch((err) => {
+        .catch(() => {
           setLoading(false);
           setError(true);
         });
@@ -41,7 +41,7 @@ export function useAllProducts({
   categoryID,
   minPrice,
   maxPrice,
-  inStock,
+  // inStock,
   searchParams,
 }: {
   categoryID?: string;

@@ -40,9 +40,9 @@ export default function UserButton() {
         </DropdownMenu>
       ) : (
         <SignInButton>
-          <Button size="sm" variant="outline">
-            Login
-            <LogInIcon className="ml-2 size-4" />
+          <Button size="sm" variant="outline" className="gap-2">
+            <span className="hidden md:flex">Login</span>
+            <LogInIcon className="size-4" />
           </Button>
         </SignInButton>
       )}

@@ -5,6 +5,7 @@ import { useCategories } from "@/lib/useFetch";
 import { CheckedState } from "@radix-ui/react-checkbox";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import { toast } from "sonner";
 import { Button } from "./ui/button";
 import { Checkbox } from "./ui/checkbox";
 import { Input } from "./ui/input";
@@ -37,7 +38,9 @@ export default function ProductsSideBar() {
     if (selectedCategory) query.set("filterCat", selectedCategory);
     if (inStock) query.set("stockStatus", "inStock");
 
-    router.replace(`/shop?${query.toString()}`);
+    router.push(`/shop?${query.toString()}`);
+    router.refresh();
+    toast("Filter Applied, Please refresh manually");
   };
 
   return (
@@ -74,13 +77,7 @@ export default function ProductsSideBar() {
           <p className="text-sm">
             Price {minPrice}-{maxPrice} BTD
           </p>
-          <Button
-            size="sm"
-            variant={"secondary"}
-            onClick={() => {
-              applyFilter();
-            }}
-          >
+          <Button size="sm" variant={"secondary"} onClick={applyFilter}>
             Filter
           </Button>
         </div>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 "use client";
 
 import ProductCard from "@/components/Card/ProductCard";
@@ -11,7 +12,7 @@ import {
 } from "@/components/ui/select";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useAllProducts } from "@/lib/useFetch";
-import { Filter, X } from "lucide-react";
+import { Filter, Loader, X } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
@@ -38,6 +39,15 @@ export default function ShopPage() {
     inStock,
     searchParams,
   });
+
+  if (loading)
+    return (
+      <main className="flex min-h-screen w-full items-center justify-center">
+        <Loader className="size-8 animate-spin" />
+      </main>
+    );
+
+  if (error) return <p>{error}</p>;
 
   return (
     <main className="container mx-auto px-4 py-12">
@@ -97,6 +107,13 @@ export default function ShopPage() {
               </Select>
             </div>
           </div>
+
+          {/* No products */}
+          {products?.length === 0 && (
+            <div className="py-6 text-center">
+              <h1 className="text-2xl">No products found 🥲</h1>
+            </div>
+          )}
 
           {/* Products */}
           <div className="grid grid-cols-2 py-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6">

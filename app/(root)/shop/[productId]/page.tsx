@@ -92,7 +92,7 @@ export default async function ProductPage({
 
             {/* Buy now */}
             <Button asChild>
-              <Link href={`/buy/${product._id}`}>
+              <Link href={`/checkout/${product._id}`}>
                 <ShoppingBag className="mr-2 h-4 w-4" />
                 Buy now
               </Link>

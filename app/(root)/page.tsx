@@ -14,17 +14,14 @@ export default function HomePage() {
 
       {/* Featured Products */}
       <div className="py-4">
-        <div className="flex flex-col items-baseline gap-0 md:flex-row md:gap-2">
-          <h1 className="text-2xl font-bold">Featured Products</h1>
-          <p className="flex-1 text-sm text-muted-foreground">
-            Dont miss our amazing products
-          </p>
-          <Button
-            size={"sm"}
-            variant={"outline"}
-            asChild
-            className="hidden md:flex"
-          >
+        <div className="flex items-center justify-between gap-0 md:gap-2">
+          <div>
+            <h1 className="text-2xl font-bold">Featured Products</h1>
+            <p className="flex-1 text-sm text-muted-foreground">
+              Dont miss our amazing products
+            </p>
+          </div>
+          <Button size={"sm"} variant={"outline"} asChild>
             <Link href="/shop">
               View All
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -63,17 +60,14 @@ export default function HomePage() {
 
       {/* New Arrivals */}
       <div className="py-4">
-        <div className="flex flex-col items-baseline gap-0 md:flex-row md:gap-2">
-          <h1 className="text-2xl font-bold">New Arrivals</h1>
-          <p className="flex-1 text-sm text-muted-foreground">
-            Dont miss our amazing products
-          </p>
-          <Button
-            size={"sm"}
-            variant={"outline"}
-            asChild
-            className="hidden md:flex"
-          >
+        <div className="flex items-center justify-between gap-0 md:gap-2">
+          <div>
+            <h1 className="text-2xl font-bold">New Arrivals</h1>
+            <p className="flex-1 text-sm text-muted-foreground">
+              Dont miss our amazing products
+            </p>
+          </div>
+          <Button size={"sm"} variant={"outline"} asChild>
             <Link href="/shop">
               View All
               <ArrowRight className="ml-2 h-4 w-4" />
